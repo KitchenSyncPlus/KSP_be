@@ -49,3 +49,5 @@ gem "pry", "~> 0.14.1"
 gem "rspec-rails", "~> 5.1", :group => :test
 
 gem "faraday", "~> 2.7"
+
+gem "figaro"

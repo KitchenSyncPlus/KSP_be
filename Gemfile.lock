@@ -58,6 +58,8 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     ffi (1.15.5)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -90,6 +92,8 @@ GEM
       net-protocol
     nio4r (2.5.8)
     nokogiri (1.13.10-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-darwin)
       racc (~> 1.4)
     pg (1.4.5)
     pry (0.14.1)
@@ -169,11 +173,13 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
+  x86_64-darwin-21
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   faraday (~> 2.7)
+  figaro
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   pry (~> 0.14.1)
