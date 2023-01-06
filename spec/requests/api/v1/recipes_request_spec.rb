@@ -22,10 +22,10 @@ RSpec.describe 'Recipes API' do
       expect(recipe[:attributes]).to be_a(Hash)
       expect(recipe[:attributes]).to have_key(:ingredients)
       expect(recipe[:attributes][:ingredients]).to be_a(String)
-      expect(recipe[:attributes]).to have_key(:source)
-      expect(recipe[:attributes][:source]).to be_a(String)
-      expect(recipe[:attributes]).to have_key(:url)
-      expect(recipe[:attributes][:url]).to be_a(String)
+      expect(recipe[:attributes]).to have_key(:label)
+      expect(recipe[:attributes][:label]).to be_a(String)
+      expect(recipe[:attributes]).to have_key(:uri)
+      expect(recipe[:attributes][:uri]).to be_a(String)
     end
   end
 end
