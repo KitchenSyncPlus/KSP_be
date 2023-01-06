@@ -55,3 +55,5 @@ gem "faraday", "~> 2.7"
 gem "figaro"
 
 gem "factory_bot", "~> 6.2"
+
+gem 'jsonapi-serializer'
