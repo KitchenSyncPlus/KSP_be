@@ -15,7 +15,7 @@ class Api::V1::RecipesController < ApplicationController
         i[:food]
       end
       ingredients_string = ingredients_array.join ", "
-      Recipe.create!(ingredients: ingredients_string, source: recipe[:recipe][:source], url: recipe[:recipe][:url])
+      Recipe.create!(ingredients: ingredients_string, label: recipe[:recipe][:label], uri: recipe[:recipe][:uri])
     end
 
     # require "pry"; binding.pry
