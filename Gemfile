@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'faker'
+  gem 'factory_bot_rails'
+  gem "net-http"
 end
 
 group :development do
@@ -49,3 +52,9 @@ gem "pry", "~> 0.14.1"
 gem "rspec-rails", "~> 5.1", :group => :test
 
 gem "faraday", "~> 2.7"
+
+gem "figaro"
+
+gem "factory_bot", "~> 6.2"
+
+gem 'jsonapi-serializer'
