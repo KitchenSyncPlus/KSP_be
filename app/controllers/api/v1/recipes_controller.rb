@@ -9,6 +9,7 @@ class Api::V1::RecipesController < ApplicationController
     #q will be params[:q] from search view
     data = JSON.parse(response.body, symbolize_names: :true)
     recipe_results = data[:hits]
+    # require 'pry'; binding.pry
     recipe_results.each do |recipe|
       ingredients_list = recipe[:recipe][:ingredients]
       ingredients_array = ingredients_list.map do |i|
