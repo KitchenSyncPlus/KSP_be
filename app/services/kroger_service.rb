@@ -1,18 +1,21 @@
 class KrogerService
-  def self.client_auth
-    Faraday.new(url: 'https://api.kroger.com/v1/connect/oauth2/token') do |f|
-      f.params['Authorization'] = ENV['kroger_key_encoded']
-    end
+  def self.conn
+    Faraday.new(url: 'https://api.kroger.com/v1')
   end
 
-  def self.conn(token)
-    Faraday.new(url: 'https://api.kroger.com/v1') do |f|
+  def self.client_auth
+    response = conn.get(url: '/connect/oauth2/token') do |f|
+      f.params['Authorization'] = "Basic #{ENV['kroger_key_encoded']}"
+      f.params['scope'] = 'product.compact'
+    end
+
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.prod_search(query, token)
+    response = conn.get("/products?filter.term=#{query}&filter.locationId=62000033") do |f|
       f.params['Authorization'] = "Bearer #{token}"
     end
-  end
-
-  def self.prod_search(query)
-    response = conn.get("/products?filter.term=#{query}&filter.locationId=62000033")
 
     JSON.parse(response.body, symbolize_names: true)
   end
