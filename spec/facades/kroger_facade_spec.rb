@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe KrogerFacade do
   let(:client_auth) { KrogerFacade.client_auth }
-  let(:prod_search) {KrogerFacade.prod_search("butter")}
+  let(:prod_search) { KrogerFacade.prod_search("butter") }
 
   context '#auth' do
     it 'extracts access token from api if doesnt exist/is expired', :vcr do
