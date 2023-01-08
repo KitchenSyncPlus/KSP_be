@@ -1,13 +1,21 @@
 class RecipeIngredient
-  attr_reader :quantity,
+  attr_reader :text,
+              :quantity,
               :measure,
               :food,
-              :weight
+              :weight,
+              :foodCategory,
+              :foodId,
+              :image
 
   def initialize(data)
+    @text = data[:text]
     @quantity = data[:quantity]
     @measure = data[:measure]
     @food = data[:food]
     @weight = data[:weight]
+    @foodCategory = data[:foodCategory]
+    @foodId = data[:foodId]
+    @image = data[:image]
   end
 end
