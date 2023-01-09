@@ -18,17 +18,19 @@ RSpec.describe KrogerFacade do
 
   end
 
-  context '#prod_search' do 
-    expect(prod_search).to be_a(Array)
-    first_hit = prod_search[0]
-    expect(first_hit).to be_a(Hash)
-    expect(first_hit.keys).to eq[:productId, :description, :price, :size, :soldBy]
-    expect(first_hit[:productId]).to be_a(String)
-    expect(first_hit[:productId]).not_to match(/\D/)
-    expect(first_hit[:description]).to be_a(String)
-    expect(first_hit[:description].downcase.include?('butter')).to be(True)
-    expect(first_hit[:price][:regular]).to be_a(Float)
-    expect(first_hit[:size]).to be_a(String)
-    expect(first_hit[:soldBy]).to be_a(String)
+  context '#prod_search' do
+    it 'returns product detail' do
+      expect(prod_search).to be_a(Array)
+      first_hit = prod_search[0]
+      expect(first_hit).to be_a(Hash)
+      expect(first_hit.keys).to eq[:productId, :description, :price, :size, :soldBy]
+      expect(first_hit[:productId]).to be_a(String)
+      expect(first_hit[:productId]).not_to match(/\D/)
+      expect(first_hit[:description]).to be_a(String)
+      expect(first_hit[:description].downcase.include?('butter')).to be(True)
+      expect(first_hit[:price][:regular]).to be_a(Float)
+      expect(first_hit[:size]).to be_a(String)
+      expect(first_hit[:soldBy]).to be_a(String)
+    end
   end
 end
