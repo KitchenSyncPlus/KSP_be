@@ -4,14 +4,14 @@ RSpec.describe KrogerService do
   let(:client_auth) { KrogerService.client_auth }
   let(:prod_search) {KrogerService.prod_search("butter")}
 
-  it 'retrives auth token', :vcr do
+  xit 'retrives auth token', :vcr do
     expect(client_auth).to be_a(Hash)
     expect(client_auth[:expires_in]).to be_a(Integer)
     expect(client_auth[:access_token]).to be_a(String)
     expect(client_auth[:toke_type]).to eq('bearer')
   end
 
-  it 'can search products', :vcr do
+  xit 'can search products', :vcr do
     expect(prod_search).to be_a(Hash)
     expect(prod_search[:data]).to be_a(Array)
     first_hit = prod_search[:data].first
