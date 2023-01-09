@@ -61,6 +61,6 @@ gem 'jsonapi-serializer'
 
 gem "rubocop", "~> 1.42"
 
-gem "webmock", "~> 3.18", :group => :test
+gem "vcr", "~> 6.1", :groups => [:test, :development]
 
-gem "vcr", "~> 6.1", :group => :test
+gem "webmock", "~> 3.18", :groups => [:test, :development]
