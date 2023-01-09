@@ -1,4 +1,4 @@
 class RecipeSerializer
   include JSONAPI::Serializer
-  attributes :ingredients, :label, :uri
+  attributes :ext_id, :label
 end
