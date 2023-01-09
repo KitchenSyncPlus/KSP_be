@@ -58,3 +58,5 @@ gem "figaro"
 gem "factory_bot", "~> 6.2"
 
 gem 'jsonapi-serializer'
+
+gem "rubocop", "~> 1.42"
