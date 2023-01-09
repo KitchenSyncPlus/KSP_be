@@ -25,3 +25,4 @@
 # Ignore application configuration
 /config/application.yml
 /notes/
+/spec/fixtures/
