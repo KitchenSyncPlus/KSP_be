@@ -110,7 +110,8 @@ GEM
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (3.12.6)
+    puma (6.0.2)
+      nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.5)
     rack-test (2.0.2)
@@ -185,7 +186,6 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
-  ruby
   x86_64-darwin-21
 
 DEPENDENCIES
@@ -201,7 +201,7 @@ DEPENDENCIES
   net-http
   pg (>= 0.18, < 2.0)
   pry (~> 0.14.1)
-  puma (~> 3.11)
+  puma (>= 4.3.12)
   rails (~> 5.2.8, >= 5.2.8.1)
   rspec-rails (~> 5.1)
   spring
