@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_06_224713) do
+ActiveRecord::Schema.define(version: 2023_01_09_231440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "group_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "about"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.string "name"
+    t.float "quantity"
+    t.float "price"
+    t.bigint "user_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+    t.index ["user_id"], name: "index_recipe_ingredients_on_user_id"
+  end
 
   create_table "recipes", force: :cascade do |t|
     t.string "ingredients"
@@ -21,15 +47,20 @@ ActiveRecord::Schema.define(version: 2023_01_06_224713) do
     t.string "uri"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_recipes_on_group_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.string "email"
     t.string "name"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
+  add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "recipe_ingredients", "users"
+  add_foreign_key "recipes", "groups"
 end
