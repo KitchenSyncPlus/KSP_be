@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe KrogerService do
   let(:client_auth) { KrogerService.client_auth }
-  let(:prod_search) {KrogerService.prod_search("butter")}
+  let(:prod_search) {KrogerService.prod_search("butter", client_auth[:access_token])}
 
   it 'retrives auth token', :vcr do
     expect(client_auth).to be_a(Hash)
     expect(client_auth[:expires_in]).to be_a(Integer)
     expect(client_auth[:access_token]).to be_a(String)
-    expect(client_auth[:toke_type]).to eq('bearer')
+    expect(client_auth[:token_type]).to eq('bearer')
   end
 
   it 'can search products', :vcr do
@@ -19,7 +19,7 @@ RSpec.describe KrogerService do
     expect(first_hit[:productId]).to be_a(String)
     expect(first_hit[:productId]).not_to match(/\D/)
     expect(first_hit[:description]).to be_a(String)
-    expect(first_hit[:description].downcase.include?('butter')).to be(True)
+    expect(first_hit[:description].downcase.include?('butter')).to be(true)
     expect(first_hit[:items]).to be_a(Array)
     item_info = first_hit[:items].first
     expect(item_info).to be_a(Hash)

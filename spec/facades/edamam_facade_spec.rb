@@ -60,7 +60,7 @@ RSpec.describe EdamamFacade do
         expect(ingredient[:food]).to be_a(String)
         expect(ingredient[:quantity]).to be_a(Float)
         expect(ingredient[:measure]).to be_a(String)
-        expect(ingredient[:foodID]).to be_a(String)
+        expect(ingredient[:foodId]).to be_a(String)
       end
     end
   end

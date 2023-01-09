@@ -7,14 +7,15 @@ class EdamamService
   end
 
   def self.recipe_search(query)
-    response = conn.get("/recipes/v2?type=public&beta=true&q=#{query}")
+    response = conn.get("/api/recipes/v2?type=public&beta=true&q=#{query}")
 
-    JSON.parse(response.body, symbolize_names: true)
+    # ruby doesnt like the nulls, so had to do a gsub
+    JSON.parse(response.body.gsub('null', '"null"'), symbolize_names: true)
   end
 
   def self.recipe_show(ext_id)
-    response = conn.get("/recipes/v2/#{ext_id}?type=public")
+    response = conn.get("/api/recipes/v2/#{ext_id}?type=public")
 
-    JSON.parse(response.body, symbolize_names: true)
+    JSON.parse(response.body.gsub('null', '"null"'), symbolize_names: true)
   end
 end

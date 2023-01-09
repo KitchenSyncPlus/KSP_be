@@ -1,20 +1,20 @@
 class KrogerFacade
   def self.client_auth
-    KrogerService.client_auth[:access_token]
+    Rails.cache.fetch(:kroger_bearer_token, expires_in: 30.minutes) do
+      KrogerService.client_auth[:access_token]
+    end
   end
 
   def self.prod_search(query)
-    target_fields = %i[productId description items price size soldBy]
-    processed_hits = KrogerService.prod_search(query).first(20)
+    target_fields = %i[productId description price size soldBy]
 
-    processed_hits.map do |hit|
-      hit.select { |key, _value| target_fields.include?(key) }
-    end
+    processed_hits = KrogerService.prod_search(query, client_auth)[:data]
 
-    processed_hits.each_with_index do |hit, index|
-      hit[:items].delete.first.each do |key, value|
-        processed_hit[index][key] = value if target_fields.include?(key)
+    processed_hits.map! do |hit|
+      hit[:items].first.each do |key, value|
+        hit[key] = value if target_fields.include?(key)
       end
+      hit.select { |key, _value| target_fields.include?(key) }
     end
   end
 end
