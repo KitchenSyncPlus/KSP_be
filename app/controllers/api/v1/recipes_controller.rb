@@ -4,9 +4,9 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def show
-    render json: EdamamFacade.recipe_show(params[:ext_id])
+    render json: EdamamFacade.recipe_show(params[:id])
   end
-  
+
   def ingredients
     render json: EdamamFacade.recipe_ingredients(params[:ext_id])
   end

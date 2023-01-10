@@ -28,4 +28,11 @@ RSpec.describe 'Recipes API' do
       expect(recipe[:attributes][:uri]).to be_a(String)
     end
   end
+
+  it 'can search for a recipe', :vcr do
+    group = create(:group)
+    recipe = create(:recipe, group: group)
+
+    get "/api/v1/recipes/#{recipe.id}"
+  end
 end
