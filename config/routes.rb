@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :recipes, only: [:index]
       resources :users, only: %i[index show create]
+      resources :groups, only: [:index]
       # get '/recipes/search', to: 'recipes#search'
     end
   end
