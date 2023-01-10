@@ -26,3 +26,5 @@
 /config/application.yml
 /notes/
 /spec/fixtures/
+
+/coverage/

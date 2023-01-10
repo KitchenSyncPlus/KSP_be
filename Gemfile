@@ -63,3 +63,7 @@ gem "rubocop", "~> 1.42"
 gem "webmock", "~> 3.18", group: %i[test development]
 
 gem "vcr", "~> 6.1", group: %i[test development]
+
+gem "shoulda-matchers", "~> 5.3", :group => :test
+
+gem "simplecov", "~> 0.22.0", :group => :test
