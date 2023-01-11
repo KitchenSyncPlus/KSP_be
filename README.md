@@ -13,7 +13,7 @@ This repo is the Back End part of a project built by students at [Turing School 
 Visit our Front End Site!
 - [KitchenSync+]()
 
-Our Back End is hosted here and requires API keys from [Kroger](https://developer.kroger.com/reference) and [Edamam](https://www.edamam.com/) to access:
+Our Back End is hosted here and requires API keys from [Kroger](https://developer.kroger.com/reference) and [Edamam Recipe API](https://developer.edamam.com/edamam-recipe-api) to access:
 - [KitchenSync+ API]()
 
 
